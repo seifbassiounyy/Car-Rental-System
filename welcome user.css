@@ -1,0 +1,228 @@
+*{
+    margin: 0;
+    padding: 0
+}
+
+body{
+    height: 100%;
+}
+
+.navbar{
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0%;
+    z-index: 999;
+    background-color: gray;
+    box-shadow: 0 0 14px rgba(0, 0, 0, 0.3);
+}
+
+.navbar .logo h1{
+    color: white;
+}
+
+.navbar .menu li{
+    list-style: none;
+    display: inline-block;
+}
+
+.navbar .menu li a{
+    display: block;
+    margin-left: 25px;
+    color: white;
+    border-bottom: 8px solid transparent;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.navbar .menu li a:hover{
+    border-bottom: 4px solid orange;
+}
+
+select {
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    -ms-appearance:none;
+    appearance:none;
+    outline:0;
+    box-shadow:none;
+    border:0!important;
+    background: white;
+    background-image: none;
+    flex: 1;
+    padding: 0 .6em;
+    color: gray;
+    cursor:pointer;
+    font-size: 0.9em;
+    font-family: 'Open Sans', sans-serif;
+ }
+
+ select::-ms-expand {
+    display: none;
+ }
+
+ .select {
+    position: relative;
+    display: flex;
+    width: 12em;
+    height: 1.5em;
+    line-height: 1.5;
+    background: white;
+    overflow: hidden;
+    border-radius: .20em;
+    border: 1.5px solid white;
+ }
+
+ .select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: gray;
+    cursor:pointer;
+    pointer-events:none;
+    transition:.25s all ease;
+ }
+
+ .select:hover::after {
+    color: orange;
+ }
+
+.content {
+    background-image: url(wallpaperflare.com_wallpaper.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 0 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: #f3f4f6;
+    height: 100vh;
+}
+
+.content .welcome{
+    display: block;
+    border-bottom: 8px solid transparent;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.content .welcome p{
+    color: white;
+    font-size: 30px;
+}
+
+.content h1{
+    font-size: 42px;
+}
+
+.content p{
+    font-size: 22px;
+}
+
+.content button{
+    margin-top: 30px;
+    padding: 15px 30px;
+    border: none;
+    background: #f3f4f6;
+    color:black;
+    font-size: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.content button:hover{
+    color: white;
+    background-color: gray;
+}
+
+.pheading{
+    text-align: center;
+    margin: 50px 0;
+    color: black;
+}
+
+.sec{
+    padding: 10px 5%;
+
+}
+
+.car{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.car .card{
+    width: 310px;
+    background: rgba(110, 109, 109, 0.3);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.car .card img{
+    height: 250px;
+    width: 100%;
+}
+
+.car .card .desc{
+    padding: 5px 20px;
+    opacity: 0.8;
+}
+
+.car .card .title{
+    font-weight: 900;
+    font-size: 20px;
+    color: #424144;
+    padding: 0 20px;
+}
+
+.car .card .box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.car .card .box .price{
+    color: rgb(182, 77, 35);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.car .card .box .btn{
+    font-size: 13px;
+    color: rgb(56, 38, 4);
+    padding: 10px 18px;
+    font-weight: 900;
+    border: 1px solid rgb(182, 77, 35);
+    border-radius: 20px;
+}
+
+.car .card .box .btn:hover{
+    cursor: pointer;
+    background-color: rgb(182, 77, 35);
+    color: white;
+}
+
+footer{
+    background-color: beige;
+    height: 10vh;
+}
+
+footer p{
+    text-align: center;
+    line-height: 10vh;
+}
+
+footer p a{
+    text-decoration: none;
+    color: rgb(182, 77, 35);
+    font-weight: bold;
+}
