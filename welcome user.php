@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+	
 <head>
 	<link href="Welcome user.css" rel="stylesheet">
 	<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/809/809998.png" type="image/x-icon">
 	<title>Car Rental</title>
-	<script src="https://kit.fontawesome.com/77fd9664d1.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -199,7 +199,7 @@
 	</section>
 
 	<footer>
-		<p>Contact us <a href="">Here</a></p>
+		<p><a href="">Contact us</a></p>
 	</footer>
 
 <?php

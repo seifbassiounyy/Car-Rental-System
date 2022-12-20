@@ -15,7 +15,7 @@ body{
     position: sticky;
     top: 0%;
     z-index: 999;
-    background-color: gray;
+    background-color: rgba(182, 77, 35);
     box-shadow: 0 0 14px rgba(0, 0, 0, 0.3);
 }
 
@@ -39,7 +39,7 @@ body{
 }
 
 .navbar .menu li a:hover{
-    border-bottom: 4px solid orange;
+    border-bottom: 4px solid rgba(182, 77, 35);
 }
 
 select {
@@ -82,7 +82,7 @@ select {
     top: 0;
     right: 0;
     padding: 0 1em;
-    background: gray;
+    background: rgba(182, 77, 35);
     cursor:pointer;
     pointer-events:none;
     transition:.25s all ease;
@@ -129,22 +129,22 @@ select {
     margin-top: 30px;
     padding: 15px 30px;
     border: none;
-    background: #f3f4f6;
-    color:black;
+    background: rgba(182, 77, 35);
+    color:white;
     font-size: 20px;
     border-radius: 5px;
     cursor: pointer;
 }
 
 .content button:hover{
-    color: white;
-    background-color: gray;
+    color: rgba(182, 77, 35);
+    background-color: white;
 }
 
 .pheading{
     text-align: center;
     margin: 50px 0;
-    color: black;
+    color: rgba(182, 77, 35);
 }
 
 .sec{
@@ -191,7 +191,7 @@ select {
 }
 
 .car .card .box .price{
-    color: rgb(182, 77, 35);
+    color: rgba(182, 77, 35);
     font-size: 20px;
     font-weight: bold;
 }
@@ -201,18 +201,18 @@ select {
     color: rgb(56, 38, 4);
     padding: 10px 18px;
     font-weight: 900;
-    border: 1px solid rgb(182, 77, 35);
+    border: 1px solid rgba(182, 77, 35);
     border-radius: 20px;
 }
 
 .car .card .box .btn:hover{
     cursor: pointer;
-    background-color: rgb(182, 77, 35);
+    background-color: rgba(182, 77, 35);
     color: white;
 }
 
 footer{
-    background-color: beige;
+    background-color: rgba(182, 77, 35);
     height: 10vh;
 }
 
@@ -223,6 +223,6 @@ footer p{
 
 footer p a{
     text-decoration: none;
-    color: rgb(182, 77, 35);
+    color: white;
     font-weight: bold;
 }
