@@ -15,8 +15,6 @@ btn {
   border-radius: 0
 }
 
-
-
 .btn-larger {
 	padding: 15px 40px !important;
 	border:2px solid rgba(182, 77, 35) !important;;
@@ -207,6 +205,7 @@ div#form {
     border-radius: .20em;
     border: 1.5px solid white;
  }
+ 
 #userform .form-control {
 	border-radius: 0;
 	border: 1px solid #fff;
@@ -219,15 +218,18 @@ div#form {
 	margin-top: 30px
 }
 footer{
-    background-color: rgba(182, 77, 35);
-    height: 10vh;
+	background-color: rgba(182, 77, 35);
+	height: 13vh;
 }
+
 footer p{
-    text-align: center;
-    line-height: 10vh;
+text-align: center;
+line-height: 13vh;
 }
+
 footer p a{
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
+text-decoration: none;
+color: white;
+font-size: 24px;
+font-weight: bold;
 }
