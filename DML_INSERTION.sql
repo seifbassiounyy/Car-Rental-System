@@ -1,13 +1,13 @@
 INSERT INTO OFFICE (office_id,office_name,country,city,address) VALUES 
-(1,'fisrt_office','Egypt','Cairo','Madent nasr'),
-(2,'second_office','Egypt','Alexandria','Smoha'),
-(3,'third_office','Saudi Arabia','Jeddah','Baradwan Street'),
-(4,'forth_office','Saudi Arabia','Riyadh','tahlia Street'),
-(5,'Fifth_office','United States','Chicago ','Clark Street'),
-(6,'sixth_office','United States','New york','Crosby Street') ;
+(1,'fisrt_office','egy','Cairo','Madent nasr'),
+(2,'second_office','egy','Alexandria','Smoha'),
+(3,'third_office','ksa','Jeddah','Baradwan Street'),
+(4,'forth_office','ksa','Riyadh','tahlia Street'),
+(5,'Fifth_office','usa','Chicago ','Clark Street'),
+(6,'sixth_office','usa','New york','Crosby Street') ;
 
 
-INSERT INTO ADMIN VALUES (1,'Sayed','sayedabdelfatah@gmail.com','0000');
+INSERT INTO ADMIN VALUES (1,'Ali','ali@gmail.com','0000');
 
 INSERT INTO CAR (Plate_id,Color,Year,Brand,Model,Price_per_day,office_id,Status,image) VALUES
 (2323,'white','2021','BMW','X5 xDrive40i',3000,5,'active','https://www.ccarprice.com/products/BMW_X5_xDrive40i_2021.jpg'),
@@ -32,22 +32,22 @@ INSERT INTO CAR (Plate_id,Color,Year,Brand,Model,Price_per_day,office_id,Status,
 
 
 INSERT INTO customer (national_id,Fname,Lname,email,password,phone_number,country,sex,licence_id) VALUES
-(301100,'john','smith','john@gmail.com','1234','9982822010','United States','male',1021001),
-(301103,'leo','messi','leo@gmail.com','0909','9912012000','United States','male',1090999),
-(301919,'linda','davis','linda@yahoo.com','1110','9012011332','United States','female',1099921),
-(301212,'sarah','ahmed','sara_11@yahoo.com','2123','0123378112','Egypt','female',1088181),
-(301344,'ali','mohamed','ali@gmail.com','2233','0119220113','Egypt','male',1099323),
-(309231,'natasha','williams','natasha@gmail.com','2144','9190011002','United States','female',1098212),
-(302122,'hugo','lloris','hugo@gmail.com','2332','9811366621','United States','male',1022321),
-(306672,'van','neto','van@gmail.com','2235','9832199129','United States','male',1099211), 
-(308712,'robert','brown','robert@yahoo.com','3212','9822355561','United States','male',1099123),
-(306561,'james','smith','james@gmail.com','7821','9871289610','United States','male',1092221),
-(302191,'ramy','saber','ramy@gmail.com','3334','0112292101','Egypt','male',1099221),
-(309821,'aya','mohamed','aya_12@yahoo.com','7771','0154541872','Egypt','female',1087651),
-(301234,'jasem','abdallah','jasem@gmail.com','2312','9021928301','Saudi arabia','male',1020192),
-(309876,'fred','james','fredo@gmail.com','5652','9827665512','United States','male',1092830),
-(309812,'ahmed','ibrahim','ahmed@gmail.com','9021','0101928101','Egypt','male',1092341),
-(309123,'sawsan','sayed','sawsan@gmail.com','8821','0120120323','Egypt','female',1098312),
-(309111,'abdelrahman','ibrahim','abdelrahman@gmail.com','7777','9876585722','Saudi arabia','female',1098221),
-(302123,'sagda','abdallah','sagda@gmail.com','1562','9872462244','Saudi arabia','female',1098766),
-(309912,'ahmed','sakr','sakr@gmail.com','0091','9872225111','Egypt','male',1092222);
+(301100,'john','smith','john@gmail.com','1234','9982822010','usa','male',1021001),
+(301103,'leo','messi','leo@gmail.com','0909','9912012000','usa','male',1090999),
+(301919,'linda','davis','linda@yahoo.com','1110','9012011332','usa','female',1099921),
+(301212,'sarah','ahmed','sara_11@yahoo.com','2123','0123378112','egy','female',1088181),
+(301344,'ali','mohamed','ali@gmail.com','2233','0119220113','egy','male',1099323),
+(309231,'natasha','williams','natasha@gmail.com','2144','9190011002','usa','female',1098212),
+(302122,'hugo','lloris','hugo@gmail.com','2332','9811366621','usa','male',1022321),
+(306672,'van','neto','van@gmail.com','2235','9832199129','usa','male',1099211), 
+(308712,'robert','brown','robert@yahoo.com','3212','9822355561','usa','male',1099123),
+(306561,'james','smith','james@gmail.com','7821','9871289610','usa','male',1092221),
+(302191,'ramy','saber','ramy@gmail.com','3334','0112292101','egy','male',1099221),
+(309821,'aya','mohamed','aya_12@yahoo.com','7771','0154541872','egy','female',1087651),
+(301234,'jasem','abdallah','jasem@gmail.com','2312','9021928301','ksa','male',1020192),
+(309876,'fred','james','fredo@gmail.com','5652','9827665512','usa','male',1092830),
+(309812,'ahmed','ibrahim','ahmed@gmail.com','9021','0101928101','egy','male',1092341),
+(309123,'sawsan','sayed','sawsan@gmail.com','8821','0120120323','egy','female',1098312),
+(309111,'abdelrahman','ibrahim','abdelrahman@gmail.com','7777','9876585722','ksa','female',1098221),
+(302123,'sagda','abdallah','sagda@gmail.com','1562','9872462244','ksa','female',1098766),
+(309912,'ahmed','sakr','sakr@gmail.com','0091','9872225111','egy','male',1092222);
