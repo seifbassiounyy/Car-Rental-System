@@ -36,22 +36,14 @@ body{
     border-radius: 40px;
     padding: 10px;
 }
-.navbar .search-box:hover > .search-txt{
-    width: 240px;
-    padding: 0 6px;
-    top: 50px;
-}
-.navbar .search-box:hover > .search-btn{
-   background: rgba(182, 77, 35);
-}
 
 .navbar .search-btn{
-    color: black;
+    color: white;
     float: right;
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background: white;
+    background: rgba(182, 77, 35);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,7 +61,7 @@ body{
  font-size: 16px;
  transition: 0.4s;   
  line-height: 30px;
- width: 0px;
+ width: 250px;
 }
 
 .navbar .menu{
@@ -78,6 +70,7 @@ body{
     left: 60%;
     transform: translate(-50%,-50%);
     height: 30px;
+    margin-left: 130px;
 }
 
 .navbar .menu li{
@@ -113,6 +106,9 @@ body{
 .navbar .menu li{
     list-style: none;
     display: inline-block;
+    color: black;
+    font-size: 24px;
+    margin-left: 30px;
 }
 
 .navbar .menu li a{
@@ -124,60 +120,6 @@ body{
     font-size: 20px;
     font-weight: bold;
 }
-
-.navbar .menu li a:hover{
-    border-bottom: 4px solid white;
-}
-
-select {
-    -webkit-appearance:none;
-    -moz-appearance:none;
-    -ms-appearance:none;
-    appearance:none;
-    outline:0;
-    box-shadow:none;
-    border:0!important;
-    background: white;
-    background-image: none;
-    flex: 1;
-    padding: 0 .6em;
-    color: gray;
-    cursor:pointer;
-    font-size: 0.9em;
-    font-family: 'Open Sans', sans-serif;
- }
-
- select::-ms-expand {
-    display: none;
- }
-
- .select {
-    position: relative;
-    display: flex;
-    width: 12em;
-    height: 1.5em;
-    line-height: 1.5;
-    background: white;
-    overflow: hidden;
-    border-radius: .20em;
-    border: 1.5px solid white;
- }
-
- .select::after {
-    content: '\25BC';
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 0 1em;
-    background: rgba(182, 77, 35);
-    cursor:pointer;
-    pointer-events:none;
-    transition:.25s all ease;
- }
-
- .select:hover::after {
-    color: orange;
- }
 
 .content {
     background-image: url(wallpaperflare.com_wallpaper.jpg);
@@ -258,41 +200,34 @@ select {
     width: 100%;
 }
 
-.car .card .desc{
-    padding: 5px 20px;
-    opacity: 0.8;
-}
 
 .car .card .title{
     font-weight: 900;
     font-size: 20px;
-    color: #424144;
+    color: #220855;
     padding: 0 20px;
 }
 
-.car .card .box{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-}
 
-.car .card .box .price{
+.car .card .price{
     color: rgba(182, 77, 35);
     font-size: 20px;
     font-weight: bold;
+   margin-left: 20px;
 }
 
-.car .card .box .btn{
+.car .card .btn{
     font-size: 13px;
-    color: rgb(56, 38, 4);
+    color: rgba(182, 77, 35);
     padding: 10px 18px;
     font-weight: 900;
     border: 1px solid rgba(182, 77, 35);
     border-radius: 20px;
+    margin-left: 20px;
+    margin-top: 7px;
 }
 
-.car .card .box .btn:hover{
+.car .card .btn:hover{
     cursor: pointer;
     background-color: rgba(182, 77, 35);
     color: white;

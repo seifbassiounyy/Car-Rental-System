@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 
 <?php
+include_once 'C:\xampp\htdocs\CarRentalSystem\once.php';
 session_start();
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "car_rental_company";
-
-$connect = mysqli_connect($servername, $username, $password, $dbname);
 
 if (isset($_POST["submit1"])) {
   $flag = 0;
@@ -28,9 +23,25 @@ if (isset($_POST["submit1"])) {
       break;
     }
   }
+  $query = mysqli_query($connect, "select national_id from customer");
+  while ($fetch = mysqli_fetch_assoc($query)) {
+    if ($ID == $fetch['national_id']) {
+      echo '<div class="error1"><h2 class="error2">National ID Already Exists</h2></div>';
+      $flag = 1;
+      break;
+    }
+  }
+  $query = mysqli_query($connect, "select licence_id from customer");
+  while ($fetch = mysqli_fetch_assoc($query)) {
+    if ($licence == $fetch['licence_id']) {
+      echo '<div class="error1"><h2 class="error2">Licence ID Already Exists</h2></div>';
+      $flag = 1;
+      break;
+    }
+  }
   if ($flag == 0) {
     $temp = $connect->prepare("insert into customer(Fname,Lname,Email,Password,national_id,phone_number,Country,Sex,licence_id) values(?,?,?,?,?,?,?,?,?)");
-    $temp->bind_param("ssssssssi", $Fname, $Lname, $email, $pass, $ID, $phone, $country, $gender, $licence);
+    $temp->bind_param("ssssiissi", $Fname, $Lname, $email, $pass, $ID, $phone, $country, $gender, $licence);
     $temp->execute();
     $_SESSION['email'] = $email;
     header('location:welcome user.php');
