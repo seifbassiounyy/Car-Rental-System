@@ -3,6 +3,8 @@
 <?php
 include_once 'C:\xampp\htdocs\CarRentalSystem\once.php';
 session_start();
+$email = $_SESSION['email'];
+$currentDate = date("Y-m-d");
 ?>
 
 <html lang="en">
@@ -16,8 +18,16 @@ session_start();
 </head>
 
 <?php
-	
+	$query=mysqli_query($connect,"SELECT national_id FROM customer WHERE Email='$email'");
+	$fetch = mysqli_fetch_assoc($query);
+	$nationalID = $fetch['national_id'];
+
 	$plateid = $_GET['plate2'];
+	$totalPrice = "TEST";
+	$pickupDate = "2023-05-05";
+	$returnDate = "2023-05-08";
+
+echo $deff;
 
 	$sql = "SELECT * FROM car NATURAL JOIN office WHERE car.Plate_id='$plateid'";
 
@@ -36,34 +46,6 @@ session_start();
 		}
 	
 ?>
-
-
-<script>
-	function calculatePrice(priceperday)
-	{
-		var d1 = document.getElementById("pickup").value;
-		var d2 = document.getElementById("return").value;
-		var p = parseInt(priceperday);
-		const dateOne = new Date(d1);
-		const dateTwo = new Date(d2);
-		const time = Math.abs(dateTwo - dateOne);
-		const days = Math.ceil(time / (1000 * 60 * 60 * 24));
-		const Price = days * p;
-		document.getElementById("output").innerHTML=Price;
-	}
-	function validateForm(){
-			var pickupDate= document.getElementById("pickupDate").value;
-			var returnDate= document.getElementById("returnDate").value;
-			if(pickupDate==document.getElementById("pickupDate").defaultValue){
-				alert("You must enter a pick up date");
-				return false;
-			}
-			else if(returnDate==document.getElementById("returnDate").defaultValue){
-				alert("You must enter a return date");
-				return false;
-			}
-		}
-</script>
 
 <body>
 	<nav class ="navbar">
@@ -95,20 +77,9 @@ session_start();
 				<div class="ans"><span class="sort">Office Name: </span> <?= $office ?></div><br>	
 				<div class="ans"><span class="sort">Office ID: </span> <?= $officeid ?></div><br>	
 				<div class="ans"><span class="sort">Plate Number: </span> <?= $plateid ?></div><br><br>
-				<div class="info">
-					<label class="sort">Pickup Date:</label><br>
-					<input type="date" class="form-control" name="pickupDate" id="pickupDate"/>
-				</div>
-				<br>
-				<div class="info">
-					<label class="sort">Return Date:</label><br>
-					<input type="date" class="form-control" name="returnDate" id="returnDate"/>
-				</div>
-				<div>
-					<br><br><button3 onclick="calculatePrice(<?= $Price_per_day ?>)"><span>Calculate Total Price</span></button3><br><br>
-					<label class="sort">Total Price:</label><br>
-					<p class="ans">$<p class="ans" id="output"></p></p>
-				</div>
+				<div class="ans"><span class="sort">Total Price: </span> <?= $totalPrice ?></div><br><br>
+				<div class="ans"><span class="sort">Pickup Date: </span> <?= $pickupDate ?></div><br><br>
+				<div class="ans"><span class="sort">Return Date: </span> <?= $returnDate ?></div><br><br>
 			</div>
 		</form>
 	<div>
@@ -119,17 +90,25 @@ session_start();
 	</form>
 
 	<script>
-	function print() {
-	alert("Car Rented Successfully!");
+	function print()
+	{
+		alert("Car Rented Successfully!");
 	}
 	</script>
 
 	<?php if(isset($_POST['pay']))
 		{
-			$sql = "UPDATE car SET Status = 'rented' WHERE Plate_id = '$plateid'";
-				
+			$sql = "UPDATE reservation SET reservation.Action = 'Paid' WHERE Plate_id = '$plateid' AND national_id = $nationalID AND reservation.Action = 'Approved'";
 			$result=$connect->query($sql);
-			
+
+			while($pickupDate <= $returnDate)
+			{
+				$sql = "INSERT INTO car_status (car_status.Plate_id,car_status.Date,car_status.STATUS) VALUES ($plateid,'$pickupDate','Rented')";
+				$result=$connect->query($sql);
+				$pickupDate = strtotime("+1 day", strtotime("$pickupDate"));
+				$pickupDate = date("Y-m-d",$pickupDate);
+			}
+
 			header("Location:welcome user.php");
 			exit();
 		}

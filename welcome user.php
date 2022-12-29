@@ -4,6 +4,7 @@
 include_once 'C:\xampp\htdocs\CarRentalSystem\once.php';
 session_start();
 $email = $_SESSION['email'];
+$currentDate = date("Y-m-d");
 $flag = 0;
 ?>
 
@@ -66,14 +67,13 @@ $flag = 0;
 	<section class="sec">
 		<div class="car">
 			<?php
-				
 				if ( ! empty($_POST['name'])){
 					$keyword = $_POST['name'];
-					$sql = "SELECT * FROM car NATURAL JOIN office WHERE (color='$keyword' or `year`='$keyword' or brand='$keyword' or model='$keyword' or Office_name='$keyword' or Plate_id='$keyword' or Price_per_day='$keyword') AND office.Country='$country'";
+					$sql = "SELECT * FROM car NATURAL JOIN office WHERE (color LIKE '%$keyword%' or car.year LIKE '%$keyword%' or brand LIKE '%$keyword%' or model LIKE '%$keyword%' or Office_name LIKE '%$keyword%' or Plate_id LIKE '%$keyword%' or Price_per_day LIKE '%$keyword%') AND office.Country='$country'";
 				}
 				
 				else{
-				$sql = "SELECT * FROM car NATURAL JOIN office WHERE office.Country='$country' ";
+					$sql = "SELECT * FROM car NATURAL JOIN office WHERE office.Country='$country' ";
 				}
 				
 				if ($result=$connect->query($sql))
@@ -86,7 +86,17 @@ $flag = 0;
 						$Year = $row["Year"];
 						$Price_per_day = $row["Price_per_day"];
 						$office = $row["Office_name"];
-						$status = $row["Status"];
+		            	$plate = $row["Plate_id"];
+						$query=mysqli_query($connect,"SELECT car_status.STATUS FROM car_status WHERE Plate_id='$plate' AND car_status.Date='$currentDate'");
+						$fetch = mysqli_fetch_assoc($query);
+						if(isset($fetch['STATUS']) == 0)
+						{
+							$status = 'Active';
+						}
+						else
+						{
+							$status = $fetch['STATUS'];
+						}
 						?>
 						<div class="card">
 							<div class="img"><img src= <?= $picture ?> alt=""></div>
@@ -98,7 +108,6 @@ $flag = 0;
 							<form method="get" name="form" action="carspecs.php">
 							<button class="btn" name="plate" type="submit" value=<?= $row["Plate_id"] ?> > Rent Now </button>
 							</form>
-
 						</div>
 						<?php
 					}

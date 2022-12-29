@@ -248,9 +248,9 @@ if(isset($_POST["submit2"])){
               <div class="form-group">
                 <select class="form-control" id="format1" name="country">
                   <option selected disabled value="selected">Select your country</option>
-                  <option value="egy">Egypt</option>
-                  <option value="usa">United States</option>
-                  <option value="ksa">Saudi Arabia</option>
+                  <option value="EGY">Egypt</option>
+                  <option value="USA">United States</option>
+                  <option value="KSA">Saudi Arabia</option>
                 </select>
                 <p class="help-block text-danger"></p>
               </div>

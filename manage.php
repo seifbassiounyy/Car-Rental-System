@@ -100,23 +100,23 @@
                 </div>
                 <div class="info">
                     <p>Country:</p>
-                    <?php if($country == 'egy'){ ?>
+                    <?php if($country == 'EGY'){ ?>
 					<select name="country" id="country">
-						<option value="egy" selected>Egypt</option>
-						<option value="usa">United States</option>
-						<option value="ksa">Saudie Arabia</option>
+						<option value="EGY" selected>Egypt</option>
+						<option value="USA">United States</option>
+						<option value="KSA">Saudie Arabia</option>
 					</select>
-                    <?php }elseif($country == 'usa') { ?>
+                    <?php }elseif($country == 'USA') { ?>
                         <select name="country" id="country">
-                            <option value="egy">Egypt</option>
-                            <option value="usa" selected>United States</option>
-                            <option value="ksa">Saudie Arabia</option>
+                            <option value="EGY">Egypt</option>
+                            <option value="USA" selected>United States</option>
+                            <option value="KSA">Saudie Arabia</option>
                         </select>
-                    <?php } elseif($country == 'ksa'){ ?>
+                    <?php } elseif($country == 'KSA'){ ?>
                         <select name="country" id="country">
-                            <option value="egy">Egypt</option>
-                            <option value="usa" >United States</option>
-                            <option value="ksa" selected>Saudie Arabia</option>
+                            <option value="EGY">Egypt</option>
+                            <option value="USA" >United States</option>
+                            <option value="KSA" selected>Saudie Arabia</option>
                         </select>
 				    <?php } ?>
                 </div>
