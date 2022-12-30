@@ -9,9 +9,9 @@
 <head>
 	<meta charset="utf-8"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-	<link href="payment2.css" rel="stylesheet">
+	<link href="show reservations2.css" rel="stylesheet">
 	<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/809/809998.png" type="image/x-icon">
-	<title>Car Rental - Payments</title>
+	<title>Car Rental - Show Reservations</title>
 	<script src="https://kit.fontawesome.com/77fd9664d1.js" crossorigin="anonymous"></script>
 </head>
 
@@ -29,33 +29,58 @@
 		</ul>
 	</nav>
 
-	<h1> Show Payments </h1>
+	<h1> Show Reservations </h1>
     
 	<table>
 	<tr>
-	<th>Date</th>
-	<th>Daily Payments</th>
+	<th>Reservation ID</th>
+	<th>Start Date</th>
+    <th>End Date</th>
+	<th>Entry Date</th>
+    <th>Action</th>
+	<th>Plate ID</th>
+    <th>Brand</th>
+	<th>Model</th>
+    <th>Color</th>
+	<th>Price/Day</th>
+    <th>Office ID</th>
+	<th>Year</th>
+    <th>National ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Country</th>
+    <th>Sex</th>
+    <th>Licence ID</th>
 	</tr>
 	<?php
 	$date = $from;
+
 	while($date <= $to)
 	{
-		$sql = "SELECT payments.Date, SUM(payments.Amount) AS ' Daily Payments' FROM payments WHERE payments.Date = '$date'";
-		$result = $connect->query($sql);
-		if ($result->num_rows > 0)
-		{
-			while($row = $result->fetch_assoc())
-			{
-				echo "<tr><td>" . $row["Date"]. "</td><td>" . $row["Daily Payments"] . "</td><td>";
-			}
-		}
-		else
-		{
-			echo "0 results";
-		}
+		$sql = "SELECT * FROM reservation JOIN customer ON customer.national_id = reservation.national_id
+        JOIN car ON reservation.Plate_id = car.Plate_id
+        WHERE reservation.Start_date <= '$date' AND reservation.End_date >'$date'";
+		
 		$date = strtotime("+1 day", strtotime("$date"));
 		$date = date("Y-m-d",$date);
+
+        $result = $connect->query($sql);
+        if ($result->num_rows > 0)
+        {
+            while($row = $result->fetch_assoc())
+            {
+                echo "<tr><td>" . $row["Reservation_id"]. "</td><td>" . $row["Start_date"] . "</td><td>" . $row["End_date"] . "</td><td>" . $row["Entry_date"] . "</td><td>"
+                . $row["Action"] . "</td><td>" . $row["Plate_id"] . "</td><td>" . $row["Brand"] . "</td><td>" . $row["Model"] . "</td><td>" . $row["Color"] . "</td><td>"
+                . $row["Price_per_day"] . "</td><td>" . $row["Office_id"] . "</td><td>" . $row["Year"] . "</td><td>" . $row["national_id"] . "</td><td>"
+                . $row["Fname"] . "</td><td>" . $row["Lname"] . "</td><td>" . $row["Email"] . "</td><td>" . $row["phone_number"] . "</td><td>"
+                . $row["Country"] . "</td><td>" . $row["Sex"] . "</td><td>" . $row["licence_id"] . "</td><td>";
+            }
+        }
 	}
+
+    
 	?>
 	</table>
 	
