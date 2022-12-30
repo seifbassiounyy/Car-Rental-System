@@ -55,29 +55,23 @@
     <th>Licence ID</th>
 	</tr>
 	<?php
-	$date = $from;
+	$sql = "SELECT * FROM reservation JOIN customer ON customer.national_id = reservation.national_id
+	JOIN car ON reservation.Plate_id = car.Plate_id
+	WHERE reservation.Start_date <= '$from' AND reservation.End_date >= '$from'
+	OR reservation.Start_date <= '$to' AND reservation.End_date >= '$to'
+	OR reservation.Start_date >= '$from' AND reservation.End_date <= '$to'";
 
-	while($date <= $to)
+	$result = $connect->query($sql);
+	if ($result->num_rows > 0)
 	{
-		$sql = "SELECT * FROM reservation JOIN customer ON customer.national_id = reservation.national_id
-        JOIN car ON reservation.Plate_id = car.Plate_id
-        WHERE reservation.Start_date <= '$date' AND reservation.End_date >'$date'";
-		
-		$date = strtotime("+1 day", strtotime("$date"));
-		$date = date("Y-m-d",$date);
-
-        $result = $connect->query($sql);
-        if ($result->num_rows > 0)
-        {
-            while($row = $result->fetch_assoc())
-            {
-                echo "<tr><td>" . $row["Reservation_id"]. "</td><td>" . $row["Start_date"] . "</td><td>" . $row["End_date"] . "</td><td>" . $row["Entry_date"] . "</td><td>"
-                . $row["Action"] . "</td><td>" . $row["Plate_id"] . "</td><td>" . $row["Brand"] . "</td><td>" . $row["Model"] . "</td><td>" . $row["Color"] . "</td><td>"
-                . $row["Price_per_day"] . "</td><td>" . $row["Office_id"] . "</td><td>" . $row["Year"] . "</td><td>" . $row["national_id"] . "</td><td>"
-                . $row["Fname"] . "</td><td>" . $row["Lname"] . "</td><td>" . $row["Email"] . "</td><td>" . $row["phone_number"] . "</td><td>"
-                . $row["Country"] . "</td><td>" . $row["Sex"] . "</td><td>" . $row["licence_id"] . "</td><td>";
-            }
-        }
+		while($row = $result->fetch_assoc())
+		{
+			echo "<tr><td>" . $row["Reservation_id"]. "</td><td>" . $row["Start_date"] . "</td><td>" . $row["End_date"] . "</td><td>" . $row["Entry_date"] . "</td><td>"
+			. $row["Action"] . "</td><td>" . $row["Plate_id"] . "</td><td>" . $row["Brand"] . "</td><td>" . $row["Model"] . "</td><td>" . $row["Color"] . "</td><td>"
+			. $row["Price_per_day"] . "</td><td>" . $row["Office_id"] . "</td><td>" . $row["Year"] . "</td><td>" . $row["national_id"] . "</td><td>"
+			. $row["Fname"] . "</td><td>" . $row["Lname"] . "</td><td>" . $row["Email"] . "</td><td>" . $row["phone_number"] . "</td><td>"
+			. $row["Country"] . "</td><td>" . $row["Sex"] . "</td><td>" . $row["licence_id"] . "</td><td>";
+		}
 	}
 
     
