@@ -20,7 +20,6 @@
     $brand = $fetch["Brand"];
     $model = $fetch["Model"];
 	$price = $fetch["Price_per_day"];
-    $status = $fetch["Status"];
     $year = $fetch["Year"];
 	$image = $fetch["Image"];
     if (isset($_POST["submit1"])) {
@@ -49,7 +48,7 @@
 	<nav class ="navbar">
 		<div class="logo"><a href="welcome admin.php">Car Rental <i class="fas fa-car"></i></a></div>
 		<ul class="menu">
-			<li><a href="welcome user.php">Home</a></li>
+			<li><a href="welcome admin.php">Home</a></li>
 			<li><a href="">About us</a></li>
 		</ul>
 	</nav>
@@ -78,40 +77,6 @@
 					<p>Price Per Day:</p>
 					<input type="text" class="form-control" name="price" id="price" value="<?= $price ?>"/>
 				</div>
-				<br>
-				<div class="info">
-                    <p>Status:</p>
-                    <?php if($status == 'active'){ ?>
-					<select name="status" id="status">
-						<option value="active" selected>Active</option>
-						<option value="rented">Rented</option>
-						<option value="out_of_service">Out Of Service</option>
-                            <option value="reserved" >Reserved</option>
-					</select>
-                    <?php }elseif($status == 'rented') { ?>
-                        <select name="status" id="status">
-                            <option value="active">Active</option>
-                            <option value="rented" selected>Rented</option>
-                            <option value="out_of_service">Out Of Service</option>
-                            <option value="reserved" >Reserved</option>
-                        </select>
-                    <?php } elseif($status == 'out_of_service'){ ?>
-                        <select name="status" id="status">
-                            <option value="active">Active</option>
-                            <option value="rented" >Rented</option>
-                            <option value="out_of_service" selected>Out Of Service</option>
-                            <option value="reserved" >Reserved</option>
-                        </select>
-					<?php }elseif($status == 'reserved') { ?>
-						<select name="status" id="status">
-							<option value="active">Active</option>
-							<option value="rented" >Rented</option>
-							<option value="out_of_service">Out Of Service</option>
-							<option value="reserved" selected>Reserved</option>
-						</select>
-				    <?php } ?>
-                </div>
-				<br>
 				<div class="info">
 					<p>Year:</p>
 					<input type="text" class="form-control" name="year" id="year" value="<?= $year ?>"/>

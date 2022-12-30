@@ -38,7 +38,7 @@
 	<nav class ="navbar">
 		<div class="logo"><a href="welcome admin.php">Car Rental <i class="fas fa-car"></i></a></div>
 		<ul class="menu">
-			<li><a href="welcome user.php">Home</a></li>
+			<li><a href="welcome admin.php">Home</a></li>
 			<li><a href="">About us</a></li>
 		</ul>
 	</nav>

@@ -61,7 +61,12 @@ $currentDate = date("Y-m-d");
 		var p = parseInt(priceperday);
 		const dateOne = new Date(d1);
 		const dateTwo = new Date(d2);
-		const time = Math.abs(dateTwo - dateOne);
+		const time = dateTwo - dateOne;
+		if (time <= 0)
+		{
+			alert("Return date MUST be at least 1 day after pickup date");
+			return false;
+		}
 		const days = Math.ceil(time / (1000 * 60 * 60 * 24));
 		const Price = days * p;
 		document.getElementById("output").innerHTML=Price;
@@ -69,11 +74,11 @@ $currentDate = date("Y-m-d");
 	function validateForm(){
 			var pickupDate= document.getElementById("pickupDate").value;
 			var returnDate= document.getElementById("returnDate").value;
-			if(pickupDate < returnDate)
+			if(pickupDate <= returnDate)
 			{
 				if(pickupDate==document.getElementById("pickupDate").defaultValue){
-				alert("You must enter a pick up date");
-				return false;
+					alert("You must enter a pick up date");
+					return false;
 				}
 				else if(returnDate==document.getElementById("returnDate").defaultValue){
 					alert("You must enter a return date");
@@ -119,19 +124,7 @@ $currentDate = date("Y-m-d");
 			<div class="ans"><span class="sort">Office Name: </span> <?= $office ?></div><br>	
 			<div class="ans"><span class="sort">Office ID: </span> <?= $officeid ?></div><br>	
 			<div class="ans"><span class="sort">Plate Number: </span> <?= $plateid ?></div><br>
-			<div class="info">
-				<label class="sort">Pickup Date:</label><br>
-				<input type="date" class="form-control" name="pickupDate" id="pickupDate"/>
-			</div>
-			<br>
-			<div class="info">
-				<label class="sort">Return Date:</label><br>
-				<input type="date" class="form-control" name="returnDate" id="returnDate"/>
-			</div>
-			<div><button class="btn3" onclick="calculatePrice(<?= $Price_per_day ?>)"><span>Calculate Total Price</span></button><br>
-				<label class="sort">Total Price:</label><br>
-				<p class="ans">$<p class="ans" id="output"></p></p>
-			</div>
+			
 		</div>
 	<div>
 
@@ -167,7 +160,20 @@ $currentDate = date("Y-m-d");
 				if($checkStatus == 'Rejected' || $checkStatus == 'Paid')
 				{
 					?>
-						<form method='POST' action="checkout.php" onsubmit="return validateForm()">
+						<form method='POST' action="" onsubmit="return validateForm()">
+						<div class="info">
+							<label class="sort">Pickup Date:</label><br>
+							<input type="date" class="form-control" name="pickupDate" id="pickupDate"/>
+						</div>
+						<br>
+						<div class="info">
+							<label class="sort">Return Date:</label><br>
+							<input type="date" class="form-control" name="returnDate" id="returnDate"/>
+						</div>
+						<div><button class="btn3" type="button" onclick="calculatePrice(<?= $Price_per_day ?>)"><span>Calculate Total Price</span></button><br>
+							<label class="sort">Total Price:</label><br>
+							<p class="ans">$<p class="ans" id="output"></p></p>
+						</div>
 							<button class="btn2" name=reserve type="submit"><span>Reserve</span></button>
 						</form>
 						<form method="get" name="form" action="">
@@ -180,7 +186,20 @@ $currentDate = date("Y-m-d");
 					if($fetch['national_id'] == $nationalID)
 					{
 						?>
-						<form method='POST' action='' onsubmit="return validateForm()">
+						<form method='POST' action="" onsubmit="return validateForm()">
+						<div class="info">
+							<label class="sort">Pickup Date:</label><br>
+							<input type="date" class="form-control" name="pickupDate" id="pickupDate"/>
+						</div>
+						<br>
+						<div class="info">
+							<label class="sort">Return Date:</label><br>
+							<input type="date" class="form-control" name="returnDate" id="returnDate"/>
+						</div>
+						<div><button class="btn3" type="button" onclick="calculatePrice(<?= $Price_per_day ?>)"><span>Calculate Total Price</span></button><br>
+							<label class="sort">Total Price:</label><br>
+							<p class="ans">$<p class="ans" id="output"></p></p>
+						</div>
 							<button class="btn1" name=reserve type="submit" disabled><span>Reserve</span></button>
 						</form>
 						<form method="get" name="form" action="checkout.php">
@@ -192,6 +211,19 @@ $currentDate = date("Y-m-d");
 					{
 						?>
 						<form method='POST' action='' onsubmit="return validateForm()">
+						<div class="info">
+							<label class="sort">Pickup Date:</label><br>
+							<input type="date" class="form-control" name="pickupDate" id="pickupDate"/>
+						</div>
+						<br>
+						<div class="info">
+							<label class="sort">Return Date:</label><br>
+							<input type="date" class="form-control" name="returnDate" id="returnDate"/>
+						</div>
+						<div><button class="btn3" type="button" onclick="calculatePrice(<?= $Price_per_day ?>)"><span>Calculate Total Price</span></button><br>
+							<label class="sort">Total Price:</label><br>
+							<p class="ans">$<p class="ans" id="output"></p></p>
+						</div>
 							<button class="btn1" name=reserve type="submit" disabled><span>Reserve</span></button>
 						</form>
 						<form method="get" name="form" action="checkout.php">
@@ -203,7 +235,20 @@ $currentDate = date("Y-m-d");
 				elseif($checkStatus == 'Pending')
 				{
 					?>
-						<form method='POST' action='' onsubmit="return validateForm()">
+						<form method='POST' action="" onsubmit="return validateForm()">
+						<div class="info">
+							<label class="sort">Pickup Date:</label><br>
+							<input type="date" class="form-control" name="pickupDate" id="pickupDate"/>
+						</div>
+						<br>
+						<div class="info">
+							<label class="sort">Return Date:</label><br>
+							<input type="date" class="form-control" name="returnDate" id="returnDate"/>
+						</div>
+						<div><button class="btn3" type="button" onclick="calculatePrice(<?= $Price_per_day ?>)"><span>Calculate Total Price</span></button><br>
+							<label class="sort">Total Price:</label><br>
+							<p class="ans">$<p class="ans" id="output"></p></p>
+						</div>
 							<button class="btn1" name=reserve type="submit" disabled><span>Reserve</span></button>
 						</form>
 						<form method="get" name="form" action="">
@@ -214,7 +259,20 @@ $currentDate = date("Y-m-d");
 				else
 				{
 					?>
-						<form method='POST' action='' onsubmit="return validateForm()">
+						<form method='POST' action="" onsubmit="return validateForm()">
+						<div class="info">
+							<label class="sort">Pickup Date:</label><br>
+							<input type="date" class="form-control" name="pickupDate" id="pickupDate"/>
+						</div>
+						<br>
+						<div class="info">
+							<label class="sort">Return Date:</label><br>
+							<input type="date" class="form-control" name="returnDate" id="returnDate"/>
+						</div>
+						<div><button class="btn3" type="button" onclick="calculatePrice(<?= $Price_per_day ?>)"><span>Calculate Total Price</span></button><br>
+							<label class="sort">Total Price:</label><br>
+							<p class="ans">$<p class="ans" id="output"></p></p>
+						</div>
 							<button class="btn2" name=reserve type="submit" ><span>Reserve</span></button>
 						</form>
 						<form method="get" name="form" action="">
@@ -245,9 +303,26 @@ $currentDate = date("Y-m-d");
 	<?php
 		if(isset($_POST['reserve']))
 		{
-			$sql = "INSERT INTO reservation (national_id,Plate_id,reservation.Start_date,reservation.End_date,reservation.Entry_date,reservation.Action) 
-			VALUES ($nationalID,$plateid,'$pickupDate','$returnDate','$currentDate','Pending')";
-			$result=$connect->query($sql);
+			$pickupDate = $_POST['pickupDate'];
+			$temp = $pickupDate;
+			$returnDate = $_POST['returnDate'];
+			$found = 0;
+
+			while($temp <= $returnDate)
+			{
+				$query = "select * from `car_status` where `car_status`.Date = '$temp'";
+				$result = mysqli_query($connect, $query);
+				if (mysqli_num_rows($result) > 0)
+				{
+					echo '<script>alert("This Car is not available during this period")</script>';
+					exit();
+				}
+				$temp = strtotime("+1 day", strtotime("$temp"));
+				$temp = date("Y-m-d",$temp);
+			}
+				$sql = "INSERT INTO reservation(national_id,Plate_id,reservation.Start_date,reservation.End_date,reservation.Entry_date,reservation.Action)
+				VALUES ($nationalID,$plateid,'$pickupDate','$returnDate','$currentDate','Pending')";
+				$result=$connect->query($sql);
 			
 			header("Location:welcome user.php");
 			exit();

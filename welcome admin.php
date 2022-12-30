@@ -19,14 +19,6 @@
 <body>
 	<nav class ="navbar">
 		<div class="logo"><a href="#">Car Rental <i class="fas fa-car"></i></a></div>
-		<div class="search-box">
-			<form  method="POST" name="form2" action="">
-				<input class="search-txt" type="text" name="name" placeholder="Type to search">
-				<button  class="search-btn" name="searchh" type="submit">
-					<i class="fas fa-search"></i>
-				</button>
-			</form>
-		</div>
 		<ul class="menu">
 			<li><a href="#">Home</a></li>
 			<li>
@@ -49,9 +41,26 @@
 											?>
 							 </p>
 		</div>
-		<a href="#move1"><button>Edit Cars</button></a>
-        <a href="#move2"><button>Edit officies</button></a>
-        <a href="#move3"><button>Approve cars</button></a>
+		<div class="action_btn">
+			<a href="#move1"><button>Edit Cars</button></a><br>
+			<a href="#move2"><button>Edit officies</button></a><br>
+			<a href="#move3"><button>Approve cars</button></a>
+			<form method="get" name="form" action="payment.php">
+				<button>Show Payment</button>
+			</form>
+			<form method="get" name="form" action="show reservations.php">
+				<button>Show All Reservations</button>
+			</form>
+			<form method="get" name="form" action="car reservation.php">
+				<button>Show Reservation For Car</button>
+			</form>
+			<form method="get" name="form" action="customer reservation.php">
+				<button>Show Customer's Reservations</button>
+			</form>
+			<form method="get" name="form" action="show status.php">
+				<button>Show Status</button>
+			</form>
+		</div>
 	</section>
 
 	<h1 id="move1"></h1><br><br>
@@ -75,8 +84,6 @@
 					
 					die("Connection failed: " . $conn->connect_error);
 				}
-
-				//$selectOption = $_POST['countries'];
 				
 				$sql = "SELECT * FROM car NATURAL JOIN office";
 				
@@ -197,30 +204,36 @@
 					die("Connection failed: " . $conn->connect_error);
 				}
 				
-				$sql = " SELECT * FROM car NATURAL JOIN office WHERE car.Status = 'reserved' ";
+				$sql = "SELECT * FROM (reservation NATURAL JOIN car) NATURAL JOIN office WHERE reservation.Action = 'Pending' AND  car.Office_id = office.Office_id;";
 				
 				
-				if ($result=$conn->query($sql))
+				if ($res=$conn->query($sql))
 				{
-					while($row = $result->fetch_assoc())
+					while($row = $res->fetch_assoc())
 					{
-						
+						$plate = $row["Plate_id"];
 						$respicture = $row["Image"];
 						$resBrand = $row["Brand"];
 						$resModel = $row["Model"];
 						$resYear = $row["Year"];
 						$resoffice = $row["Office_name"];
 						$resPrice_per_day = $row["Price_per_day"];
-
+						$pickupDate = $row["Start_date"];
+						$retuenDate = $row["End_date"];
+						$ID = $row["national_id"];
 						?>
 
 						<div class="card">
 							<div class="img"><img src= <?= $respicture ?> alt=""></div>
+							<div class="desc">Plate_id: <?= $plate ?></div>
 							<div class="desc">Brand: <?= $resBrand ?></div>
 							<div class="title">Model: <?= $resModel ?></div>
 							<div class="year">Year: <?= $resYear ?></div>
 							<div class="office">Office: <?= $resoffice ?></div>
 							<div class="price">Price/Day: <?=  $resPrice_per_day ?></div>
+							<div class="price">Pick Up Date: <?= $pickupDate ?></div>
+							<div class="price">Return Date: <?=  $retuenDate ?></div>
+							<div class="price">Customer National ID: <?=  $ID ?></div>
 							<div class="box">
 							</div>
 								<div class="box">
@@ -234,7 +247,7 @@
 						<?php
 					}
 					
-					$result->free();
+					$res->free();
 				}
 
 			?>
@@ -248,16 +261,14 @@
 <?php
 	if (isset($_GET["approve"])) {
 		$plate = $_GET["approve"];
-		$temp = $connect->prepare("UPDATE car SET car.Status='approved' WHERE Plate_id='$plate'");
+		$temp = $connect->prepare("UPDATE reservation SET reservation.Action='Approved' WHERE Plate_id='$plate' AND reservation.Action='Pending'");
 		$temp->execute();
-		header('location:welcome admin.php');
 		}
 
 	if (isset($_GET["reject"])) {
 		$plate = $_GET["reject"];
-		$temp = $connect->prepare("UPDATE car SET car.Status='active' WHERE Plate_id='$plate'");
+		$temp = $connect->prepare("UPDATE reservation SET reservation.Action='Rejected' WHERE Plate_id='$plate' AND reservation.Action='Pending'");
 		$temp->execute();
-		header('location:welcome admin.php');
 	}
 ?>
 </body>

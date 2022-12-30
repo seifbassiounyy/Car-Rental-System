@@ -27,8 +27,6 @@ $currentDate = date("Y-m-d");
 	$pickupDate = "2023-05-05";
 	$returnDate = "2023-05-08";
 
-echo $deff;
-
 	$sql = "SELECT * FROM car NATURAL JOIN office WHERE car.Plate_id='$plateid'";
 
 	if ($result=$connect->query($sql))
