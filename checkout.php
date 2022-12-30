@@ -23,25 +23,43 @@ $currentDate = date("Y-m-d");
 	$nationalID = $fetch['national_id'];
 
 	$plateid = $_GET['plate2'];
-	$totalPrice = "TEST";
-	$pickupDate = "2023-05-05";
-	$returnDate = "2023-05-08";
 
 	$sql = "SELECT * FROM car NATURAL JOIN office WHERE car.Plate_id='$plateid'";
 
 	if ($result=$connect->query($sql))
+	{
+		if ($car = $result->fetch_assoc())
+			{
+				$picture = $car["Image"];
+				$Brand = $car["Brand"];
+				$Model = $car["Model"];
+				$Year = $car["Year"];
+				$Price_per_day = $car["Price_per_day"];
+				$officeid = $car["Office_id"];
+				$office = $car["Office_name"];
+			}
+	}
+
+	$query = "select Start_date, End_date from reservation where reservation.Plate_id = '$plateid' and reservation.Action ='Approved'";
+	$result = mysqli_query($connect, $query);
+	if ($result=$connect->query($query))
+	{
+		if ($reservation = $result->fetch_assoc())
 		{
-			if ($car = $result->fetch_assoc())
-				{
-					$picture = $car["Image"];
-					$Brand = $car["Brand"];
-					$Model = $car["Model"];
-					$Year = $car["Year"];
-					$Price_per_day = $car["Price_per_day"];
-					$officeid = $car["Office_id"];
-					$office = $car["Office_name"];
-				}
+			$pickupDate = $reservation["Start_date"];
+			$returnDate = $reservation["End_date"];
 		}
+	}
+	$temp =strtotime("$pickupDate");
+	$temp1 =strtotime("$returnDate");
+	$temp = $temp1 - $temp;
+	$temp = ($temp /(60 * 60 * 24));
+
+	$query=mysqli_query($connect,"select Price_per_day from car where Plate_id = '$plateid'");
+	$fetch = mysqli_fetch_assoc($query);
+	$price = $fetch['Price_per_day'];
+
+	$totalPrice = $price * $temp;
 	
 ?>
 
@@ -94,19 +112,21 @@ $currentDate = date("Y-m-d");
 	}
 	</script>
 
-	<?php if(isset($_POST['pay']))
+	<?php
+	if(isset($_POST['pay']))
 		{
 			$sql = "UPDATE reservation SET reservation.Action = 'Paid' WHERE Plate_id = '$plateid' AND national_id = $nationalID AND reservation.Action = 'Approved'";
 			$result=$connect->query($sql);
-
-			while($pickupDate <= $returnDate)
+			$date = $pickupDate;
+			while($date <= $returnDate)
 			{
-				$sql = "INSERT INTO car_status (car_status.Plate_id,car_status.Date,car_status.STATUS) VALUES ($plateid,'$pickupDate','Rented')";
+				$sql = "INSERT INTO car_status (car_status.Plate_id,car_status.Date,car_status.STATUS) VALUES ($plateid,'$date','Rented')";
 				$result=$connect->query($sql);
-				$pickupDate = strtotime("+1 day", strtotime("$pickupDate"));
-				$pickupDate = date("Y-m-d",$pickupDate);
+				$sql = "INSERT INTO payments (Plate_id,payments.Date,Amount) VALUES ($plateid,'$date',$Price_per_day)";
+				$result=$connect->query($sql);
+				$date = strtotime("+1 day", strtotime("$date"));
+				$date = date("Y-m-d",$date);
 			}
-
 			header("Location:welcome user.php");
 			exit();
 		}

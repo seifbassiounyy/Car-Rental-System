@@ -37,12 +37,14 @@
 	<th>Daily Payments</th>
 	</tr>
 	<?php
-	$date = $from;
-	while($date <= $to)
+
+	$temp = $from;
+	while($temp <= $to)
 	{
-		$sql = "SELECT payments.Date, SUM(payments.Amount) AS ' Daily Payments' FROM payments WHERE payments.Date = '$date'";
+		$sql = "SELECT payments.Date, SUM(payments.Amount) AS ' Daily Payments' FROM
+				payments WHERE payments.Date = '$temp' GROUP BY  payments.Date";
 		$result = $connect->query($sql);
-		if ($result->num_rows > 0)
+		if(mysqli_num_rows($result) > 0)
 		{
 			while($row = $result->fetch_assoc())
 			{
@@ -51,10 +53,10 @@
 		}
 		else
 		{
-			echo "0 results";
+			echo "<tr><td>" . $temp . "</td><td>" . 0 . "</td><td>";
 		}
-		$date = strtotime("+1 day", strtotime("$date"));
-		$date = date("Y-m-d",$date);
+		$temp = strtotime("+1 day", strtotime("$temp"));
+		$temp = date("Y-m-d",$temp);
 	}
 	?>
 	</table>

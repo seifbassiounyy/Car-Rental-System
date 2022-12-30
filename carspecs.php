@@ -306,7 +306,7 @@ $currentDate = date("Y-m-d");
 			$pickupDate = $_POST['pickupDate'];
 			$temp = $pickupDate;
 			$returnDate = $_POST['returnDate'];
-			$found = 0;
+			$totalPrice = $_POST['output'];
 
 			while($temp <= $returnDate)
 			{
