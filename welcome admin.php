@@ -19,7 +19,17 @@
 <body>
 	<nav class ="navbar">
 		<div class="logo"><a href="#">Car Rental <i class="fas fa-car"></i></a></div>
+
+		<div class="search-box">
+			<form  method="POST" name="form2" action="advancedsearch.php">
+				<input class="search-txt" type="text" name="advanced" placeholder="Type to search">
+				<button  class="search-btn" name="search" type="submit" formaction="advancedsearch.php" value="car">Car</button>
+				<button  class="search-btn" name="search" type="submit" formaction="advancedsearch.php" value="customer">Customer</button>
+				<button  class="search-btn" name="search3" type="submit" formaction="advancedreservation.php">Reservation</button>
+			</form>
+		</div>
 		<ul class="menu">
+
 			<li><a href="#">Home</a></li>
 			<li>
 				<a href="#">Account</a>
@@ -32,15 +42,21 @@
 	</nav>
 
 
-	
+
 	<section class="content">
-		<div class="welcome"><p>Welcome Back <?php
-												$query=mysqli_query($connect,"select admin_name from admin where Email = '$email'");
-												$fetch = mysqli_fetch_assoc($query);
-												echo $fetch['admin_name'];
-											?>
-							 </p>
+
+		<div class="welcome">
+
+			<p> Welcome Back
+				<?php
+					$query=mysqli_query($connect,"select admin_name from admin where Email = '$email'");
+					$fetch = mysqli_fetch_assoc($query);
+					echo $fetch['admin_name'];
+				?>
+			</p>
+
 		</div>
+
 		<div class="action_btn">
 			<a href="#move1"><button>Edit Cars</button></a><br>
 			<a href="#move2"><button>Edit officies</button></a><br>
