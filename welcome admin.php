@@ -67,7 +67,7 @@
 			<form method="get" name="form" action="show reservations.php">
 				<button>Show All Reservations</button>
 			</form>
-			<form method="get" name="form" action="car reservation.php">
+			<form method="get" name="form" action="carReservations.php">
 				<button>Show Reservation For Car</button>
 			</form>
 			<form method="get" name="form" action="customer reservation.php">
