@@ -18,7 +18,7 @@ if (isset($_POST["submit1"])) {
   $query = mysqli_query($connect, "select Email from customer");
   while ($fetch = mysqli_fetch_assoc($query)) {
     if ($email == $fetch['Email']) {
-      echo '<div class="error1"><h2 class="error2">Email Already Exists</h2></div>';
+      echo '<script>alert("This email already exists")</script>';
       $flag = 1;
       break;
     }
@@ -26,7 +26,7 @@ if (isset($_POST["submit1"])) {
   $query = mysqli_query($connect, "select national_id from customer");
   while ($fetch = mysqli_fetch_assoc($query)) {
     if ($ID == $fetch['national_id']) {
-      echo '<div class="error1"><h2 class="error2">National ID Already Exists</h2></div>';
+      echo '<script>alert("National ID already exists")</script>';
       $flag = 1;
       break;
     }
@@ -34,7 +34,7 @@ if (isset($_POST["submit1"])) {
   $query = mysqli_query($connect, "select licence_id from customer");
   while ($fetch = mysqli_fetch_assoc($query)) {
     if ($licence == $fetch['licence_id']) {
-      echo '<div class="error1"><h2 class="error2">Licence ID Already Exists</h2></div>';
+      echo '<script>alert("License ID already exists")</script>';
       $flag = 1;
       break;
     }
@@ -63,7 +63,7 @@ if(isset($_POST["submit2"])){
     }
     else
     {
-      echo '<div class="error1"><h2 class="error2">You entered username or password incorrect</h2></div>';
+      echo '<script>alert("Incorrect password or email")</script>';
     }
   }
   else if($var == 'admin')
@@ -77,7 +77,7 @@ if(isset($_POST["submit2"])){
     }
     else
     {
-      echo '<div class="error1"><h2 class="error2">You entered username or password incorrect</h2></div>';
+      echo '<script>alert("Incorrect password or email")</script>';
     }
   }
 }
