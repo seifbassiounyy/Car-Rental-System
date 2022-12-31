@@ -105,9 +105,9 @@
                 <div class="info">
                     <p>Country:</p>
                     <select class="form-control" id="format1" name="country">
-                        <option value="egy" selected>Egypt</option>
-                        <option value="usa">United States</option>
-                        <option value="ksa">Saudi Arabia</option>
+                        <option value="EGY" selected>Egypt</option>
+                        <option value="USA">United States</option>
+                        <option value="KSA">Saudi Arabia</option>
                     </select>
                 </div>
                 <div class="info">
