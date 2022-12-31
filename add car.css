@@ -86,7 +86,7 @@ border-bottom: 4px solid white;
 
 
 h1{
-background-color:rgb(221, 185, 27);
+background-color:rgb(14, 51, 87);
 padding: 20px;
 text-align: center;
 color: white;
@@ -96,9 +96,9 @@ box-shadow: 0 0 14px rgba(0, 0, 0, 0.3);
 
 button{
   border-radius: 4px;
-  background-color:rgb(221, 185, 27);
-  border: none;
-  color: rgb(27, 22, 1);
+  background-color:rgb(14, 51, 87);
+  border: 1px solid white;
+  color: white;
   text-align: center;
   font-size: 20px;
   padding: 10px;
@@ -136,15 +136,15 @@ margin-left: 790px;
 }
 
 .content {
-  background-image: url(https://c4.wallpaperflare.com/wallpaper/898/426/563/subaru-impreza-subaru-impreza-wrx-sti-blobeye-hd-wallpaper-preview.jpg);
+  background-image: url(https://c4.wallpaperflare.com/wallpaper/355/994/562/car-lamborghini-aventador-supercars-vehicle-wallpaper-preview.jpg);
   background-size: cover;
   background-repeat: no-repeat;
 }
 
 .specs{
 width: 500px;
-height: 660px;
-background: rgb(255, 255, 255);
+height: 530px;
+background: rgb(214, 211, 211);
 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 border-radius: 5px;
 border-color: black;

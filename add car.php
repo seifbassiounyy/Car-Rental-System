@@ -35,7 +35,7 @@
             echo '<div class="error1"><h2 class="error2">Office does not exist</h2></div>';
         }
         if ($flag == 0 and $temp == 1) {
-            $temp = $connect->prepare("INSERT INTO CAR (Plate_id,Color,car.Year,Brand,Model,Price_per_day,office_id,car.Status,car.Image) VALUES ($ID,'$color',$year,'$brand', '$model', $price,$office,'$status','$image')");
+            $temp = $connect->prepare("INSERT INTO CAR (Plate_id,Color,car.Year,Brand,Model,Price_per_day,office_id,car.Image) VALUES ($ID,'$color',$year,'$brand', '$model', $price,$office,'$image')");
             $temp->execute();
             header('location:welcome admin.php');
         }
@@ -168,18 +168,6 @@
                     <p>Price Per Day:</p>
                     <input type="text" class="form-control" name="price" id="price" value=""/>
                 </div>
-                <br>
-                <div class="info">
-                    <p>Status:</p>
-                    <select class="form-control" id="format1" name="status">
-                        <option value="active" selected>Active</option>
-                        <option value="out_of_service">Out of service</option>
-                        <option value="rented">Rented</option>
-                        <option value="reserved">Reserved</option>
-                        <option value="approved">Approved</option>
-                    </select>
-                </div>
-                <br>
                 <div class="info">
                     <p>Year:</p>
                     <input type="text" class="form-control" name="year" id="year" value=""/>
