@@ -6,6 +6,7 @@
 body{
   min-height: 100vh;
   background-color: rgba(13, 107, 90, 0.479);
+  width: 100%;
 }
 
 .navbar{
@@ -18,6 +19,7 @@ body{
   z-index: 999;
   background-color: rgba(182, 77, 35);
   box-shadow: 0 0 14px rgba(0, 0, 0, 0.3);
+  width: 100%;
 }
 
 .navbar .logo a{
@@ -90,14 +92,12 @@ h1{
   text-align: center;
   color: white;
   box-shadow: 0 0 14px rgba(0, 0, 0, 0.3);
+  width: 100%;
 }
 
 table {
   border-collapse: collapse;
-  width: 600px;
-  color: black;
-  font-family: monospace;
-  font-size: 25px;
+  font-size: 20px;
   text-align: left;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
@@ -107,9 +107,11 @@ table {
   padding: 10px;
   margin-top: 50px;
 }
+
 th {
   background-color: #107e50;
   color: white;
+  width: 150px;
 }
 
 tr:nth-child(even) {
@@ -121,6 +123,7 @@ footer{
   top: 100%;
   background-color: rgba(182, 77, 35);
   height: 13vh;
+  width: 100%;
 }
 
 footer p{
