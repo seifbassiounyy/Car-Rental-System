@@ -330,9 +330,17 @@ $currentDate = date("Y-m-d");
 				$temp = strtotime("+1 day", strtotime("$temp"));
 				$temp = date("Y-m-d",$temp);
 			}
-				$sql = "INSERT INTO reservation(national_id,Plate_id,reservation.Start_date,reservation.End_date,reservation.Entry_date,reservation.Action)
-				VALUES ($nationalID,$plateid,'$pickupDate','$returnDate','$currentDate','Pending')";
-				$result=$connect->query($sql);
+			$query = "SELECT * FROM `reservation` WHERE `reservation`.national_id = '$national_id'
+					AND `reservation`.Plate_id = '$plateid' AND `reservation`.Entry_date = '$currentDate'";
+			$result = mysqli_query($connect, $query);
+			if (mysqli_num_rows($result) > 0)
+			{
+				echo '<script>alert("This Car is not available during this period")</script>';
+				exit();
+			}
+			$sql = "INSERT INTO reservation(national_id,Plate_id,reservation.Start_date,reservation.End_date,reservation.Entry_date,reservation.Action)
+			VALUES ($nationalID,$plateid,'$pickupDate','$returnDate','$currentDate','Pending')";
+			$result=$connect->query($sql);
 			
 			header("Location:welcome user.php");
 			exit();
