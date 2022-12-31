@@ -39,16 +39,17 @@ body{
 .navbar .search-btn{
     color: white;
     float: right;
-    padding: 20px;
-    width: 80px;
-    height: 30px;
+    padding: 10px;
+    width: 60px;
+    height: 40px;
     border-radius: 50%;
-    background: rgba(182, 77, 35);
+    background: rgb(115, 138, 165);
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 0.4s;
-    text-decoration: none;
+    font-size: 10px;
+    margin-left: 5px;
+    cursor: pointer;
 }
 
 .navbar .search-txt{
@@ -58,10 +59,11 @@ body{
  float: left;
  padding: 0;
  color: black;
- font-size: 16px;
+ font-size: 20px;
  transition: 0.4s;   
- line-height: 30px;
+ line-height: 40px;
  width: 250px;
+ margin-left: 10px;
 }
 
 .navbar .menu{
@@ -143,9 +145,9 @@ body{
 }
 
 .content .welcome p{
-    margin-left: 35px;
-    color: black;
-    font-size: 30px;
+    margin-left: 20px;
+    color: white;
+    font-size: 26px;
     text-align: center;
 }
 
@@ -158,13 +160,13 @@ body{
 }
 
 .content button{
-    width: 300px;
-    height: 50px;
+    width: 250px;
+    height: 30px;
     margin-top: 30px;
     border: none;
     background: rgba(182, 77, 35);
     color:white;
-    font-size: 20px;
+    font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -205,28 +207,17 @@ body{
 }
 
 
-.car .card .title {
+.car .card .title{
     font-weight: 900;
     font-size: 20px;
-    color: #1b30f0;
+    color: #220855;
     padding: 0 20px;
 }
-.car .card .year {
+
+.car .card .title p{
     font-weight: 900;
     font-size: 20px;
-    color: #1b30f0;
-    padding: 0 20px;
-}
-.car .card .office {
-    font-weight: 900;
-    font-size: 20px;
-    color: #1b30f0;
-    padding: 0 20px;
-}
-.car .card .desc {
-    font-weight: 900;
-    font-size: 20px;
-    color: #1b30f0;
+    color: white;
     padding: 0 20px;
 }
 

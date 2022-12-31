@@ -60,7 +60,8 @@
 		<div class="action_btn">
 			<a href="#move1"><button>Edit Cars</button></a><br>
 			<a href="#move2"><button>Edit officies</button></a><br>
-			<a href="#move3"><button>Approve cars</button></a>
+			<a href="#move3"><button>Approve cars</button></a><br>
+			<a href="#move4"><button>Reject Cars That Not Paid</button></a>
 			<form method="get" name="form" action="payment.php">
 				<button>Show Payment</button>
 			</form>
@@ -117,12 +118,13 @@
 						?>
 						<div class="card">
 							<div class="img"><img src= <?= $picture ?> alt=""></div>
-							<div class="desc">Brand: <?= $Brand ?></div>
-							<div class="title">Model: <?= $Model ?></div>
-							<div class="year">Year: <?= $Year ?></div>
-							<div class="office">Office: <?= $office ?></div>
+							<br>
+							<div class="title"><span style="color:grey">Brand: </span> <?= $Brand ?></div>
+							<div class="title"><span style="color:grey">Model: </span><?= $Model ?></div>
+							<div class="title"><span style="color:grey">Year: </span><?= $Year ?></div>
+							<div class="title"><span style="color:grey">Office: </span><?= $office ?></div>
 							<div class="box">
-								<div class="price"><?=  $Price_per_day ?></div>
+								<div class="price"><span style="color:green">$</span> <?=  $Price_per_day ?></div>
 								<form method="get" name="form" action="edit car.php">
 									<button class="btn" name="plate" type="submit" value=<?= $row["Plate_id"] ?> > Edit Car </button>
 								</form>
@@ -178,11 +180,10 @@
 
 						<div class="card">
 							<div class="img"><img src="https://images.olx.com.eg/thumbnails/43759412-800x600.webp" alt=""></div>
-							<div class="desc">Office ID: <?= $officeid ?></div>
-							<div class="title">Office Name: <?= $officename ?></div>
-							<div class="title">City: <?= $officecity ?></div>
-							<div class="title">Address: <?= $officeaddress ?></div>
-
+							<div class="title"><span style="color:grey">Office ID: </span><?= $officeid ?></div>
+							<div class="title"><span style="color:grey">Office Name: </span><?= $officename ?></div>
+							<div class="title"><span style="color:grey">City: </span><?= $officecity ?></div>
+							<div class="title"><span style="color:grey">Address: </span><?= $officeaddress ?></div>
 							<div class="box">
 								<form method="get" name="form" action="edit office.php">
 									<button class="btn" name="office" type="submit" value=<?= $officeid ?> > Edit Office </button>
@@ -206,11 +207,7 @@
 
 	<section class="sec">
 		<div class="car">
-
-      
-		
-
-		<?php
+			<?php
 
 				$conn = new mysqli($servername, $username, $password, $dbname);
 				
@@ -241,31 +238,88 @@
 
 						<div class="card">
 							<div class="img"><img src= <?= $respicture ?> alt=""></div>
-							<div class="desc">Plate_id: <?= $plate ?></div>
-							<div class="desc">Brand: <?= $resBrand ?></div>
-							<div class="title">Model: <?= $resModel ?></div>
-							<div class="year">Year: <?= $resYear ?></div>
-							<div class="office">Office: <?= $resoffice ?></div>
-							<div class="price">Price/Day: <?=  $resPrice_per_day ?></div>
-							<div class="price">Pick Up Date: <?= $pickupDate ?></div>
-							<div class="price">Return Date: <?=  $retuenDate ?></div>
-							<div class="price">Customer National ID: <?=  $ID ?></div>
+							<div class="title"><span style="color:grey">Plate ID: </span><?= $plate ?></div>
+							<div class="title"><span style="color:grey">Brand: </span><?= $resBrand ?></div>
+							<div class="title"><span style="color:grey">Model: </span><?= $resModel ?></div>
+							<div class="title"><span style="color:grey">Year: </span><?= $resYear ?></div>
+							<div class="title"><span style="color:grey">Office: </span><?= $resoffice ?></div>
+							<div class="title"><span style="color:grey">Price/Day: </span><?=  $resPrice_per_day ?></div>
+							<div class="title"><span style="color:grey">Pick Up Date: </span><?= $pickupDate ?></div>
+							<div class="title"><span style="color:grey">Return Date: </span><?=  $retuenDate ?></div>
+							<div class="title"><span style="color:grey">Customer National ID: </span><?=  $ID ?></div>
+							<div class="box">
+							</div>
+							<div class="box">
+								<form method="get" name="form">
+									<button class="btn2" name="approve" type="submit" value=<?= $row["Plate_id"] ?> > Approve </button>
+									<button class="btn3" name="reject" type="submit" value=<?= $row["Plate_id"] ?> > Reject </button>
+								</form>
+							</div>
+							</div>
+
+						<?php
+					}
+					$res->free();
+				}
+			?>
+		</div>
+	</section>
+
+	<h1 id="move4"></h1><br><br>
+    <h1 class="pheading">Reject Cars That Not Paid</h1>
+
+	<section class="sec">
+		<div class="car">
+			<?php
+
+				$conn = new mysqli($servername, $username, $password, $dbname);
+				
+				if($conn->connect_error)
+				{
+					die("Connection failed: " . $conn->connect_error);
+				}
+				
+				$sql = "SELECT * FROM (reservation NATURAL JOIN car) NATURAL JOIN office WHERE reservation.Action = 'Approved' AND  car.Office_id = office.Office_id;";
+				
+				
+				if ($res=$conn->query($sql))
+				{
+					while($row = $res->fetch_assoc())
+					{
+						$plate = $row["Plate_id"];
+						$respicture = $row["Image"];
+						$resBrand = $row["Brand"];
+						$resModel = $row["Model"];
+						$resYear = $row["Year"];
+						$resoffice = $row["Office_name"];
+						$resPrice_per_day = $row["Price_per_day"];
+						$entryDate = $row["Entry_date"];
+						$ID = $row["national_id"];
+						?>
+
+						<div class="card">
+							<div class="img"><img src= <?= $respicture ?> alt=""></div>
+							<div class="title"><span style="color:grey">Plate_id: </span><?= $plate ?></div>
+							<div class="title"><span style="color:grey">Brand: </span><?= $resBrand ?></div>
+							<div class="title"><span style="color:grey">Model: </span><?= $resModel ?></div>
+							<div class="title"><span style="color:grey">Year: </span><?= $resYear ?></div>
+							<div class="title"><span style="color:grey">Office: </span><?= $resoffice ?></div>
+							<div class="title"><span style="color:grey">Price/Day: </span><?=  $resPrice_per_day ?></div>
+							<div class="title"><span style="color:grey">Reserved at: </span><?= $entryDate ?></div>
+							<div class="title"><span style="color:grey">Customer National ID: </span><?=  $ID ?></div>
 							<div class="box">
 							</div>
 								<div class="box">
 									<form method="get" name="form">
-										<button class="btn2" name="approve" type="submit" value=<?= $row["Plate_id"] ?> > Approve </button>
-										<button class="btn3" name="reject" type="submit" value=<?= $row["Plate_id"] ?> > Reject </button>
+										<button class="btn3" name="paid" type="submit" value=<?= $row["Plate_id"] ?> > Reject due to not paid </button>
 									</form>
 								</div>
 							</div>
 
 						<?php
 					}
-					
 					$res->free();
 				}
-
 			?>
 		</div>
 	</section>
@@ -286,6 +340,13 @@
 		$temp = $connect->prepare("UPDATE reservation SET reservation.Action='Rejected' WHERE Plate_id='$plate' AND reservation.Action='Pending'");
 		$temp->execute();
 	}
+
+	if (isset($_GET["paid"])) {
+		$plate = $_GET["paid"];
+		$temp = $connect->prepare("UPDATE reservation SET reservation.Action='Rejected not paid' WHERE Plate_id='$plate' AND reservation.Action='Approved'");
+		$temp->execute();
+	}
+	
 ?>
 </body>
 </html>
