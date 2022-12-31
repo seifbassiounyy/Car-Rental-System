@@ -36,29 +36,45 @@
 	<th>Status</th>
 	</tr>
 	<?php
-    $sql = "SELECT car_status.Plate_id, car_status.`STATUS` FROM car_status WHERE car_status.`Date` = '$date'";
-    $result = $connect->query($sql);
 
-    /*$query = "SELECT Plate_id FROM car";
-    $res = $connect->query($query);
+		$sql = "SELECT Plate_id FROM car";
+		$result = $connect->query($sql);
+		
+		$cars_array = array();
+		$temp = 0;
+		while($row = $result->fetch_assoc())
+		{
+			$cars_array[$temp] = $row['Plate_id'];
+			$temp = $temp + 1;
+		}
 
-    while($row1 = $res->fetch_assoc())
-    {
-        $status = 'Active';
-        while($row = $result->fetch_assoc())
-        {
-            echo $row["Plate_id"];
-            echo "  ";
-            echo $row1['Plate_id'];
-            echo "  ";
-            if($row["Plate_id"] == $row1['Plate_id'])
-            {
-                $status = $row["STATUS"];
-                //echo "<tr><td>" . $row1["Plate_id"]. "</td><td>" . $status . "</td><td>";
-            }
-            //echo "<tr><td>" . $row1["Plate_id"]. "</td><td>" . $status . "</td><td>";
-        }
-    }*/
+		$sql = "SELECT car_status.Plate_id, car_status.`STATUS` FROM car_status WHERE car_status.`Date` = '$date'";
+		$result = $connect->query($sql);
+
+		//$status = 'Active';
+		while($fetch = $result->fetch_assoc())
+		{
+			for($i = 0; $i < $temp; $i++)
+			{
+				if($fetch['Plate_id'] == $cars_array[$i])
+				{
+					$cars_array[$i] = "";
+					$status = $fetch['STATUS'];
+					echo "<tr><td>" . $fetch["Plate_id"]. "</td><td>" . $status . "</td><td>";
+					break;
+				}
+			}
+		}
+
+		for($i = 0; $i < $temp; $i++)
+		{
+			if($cars_array[$i] != "")
+			{
+				$status = "Active";
+				echo "<tr><td>" . $cars_array[$i] . "</td><td>" . $status . "</td><td>";
+				$cars_array[$i] = "";
+			}
+		}
 	?>
 	</table>
 	
