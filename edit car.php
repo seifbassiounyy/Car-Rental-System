@@ -118,6 +118,7 @@
 				<div class="img"><img src="<?= $image ?>" alt=""></div>
 			</div>
 			<div class="specs">
+			
 				<div class="info">
 					<p>Color:</p>
 					<input type="text" class="form-control" name="color" id="color" value="<?= $color ?>"/>
@@ -150,20 +151,18 @@
 					<p>Out of Service to:</p>
 					<input type="date" class="form-control" name="to" id="to">
 				</div>
+				
 			</div>
-
+			<br>
+			<br>
 			<div>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
 				<button type="submit" class="btn btn-larger btn-block" value='submit1' name="submit1">Save</button>
 				<button type="submit" class="btn btn-larger btn-block" value='submit2' name="submit2">Delete</button>
-			</div>
+				</div>
 		</section>
 	</form>
+
+
 	<footer>
 		<p><a href="">Contact us</a></p>
 	</footer>
