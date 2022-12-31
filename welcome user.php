@@ -104,10 +104,12 @@ $flag = 0;
 							<div class="title"><span style="color:grey">Year: </span><?= $Year ?></div>
 							<div class="title"><span style="color:grey">Office: </span><?= $office ?> </div>
 							<div class="title"><span style="color:grey">Status: </span><?= $status ?> </div>
-							<div class="price"><span style="color:grey">Price/Day: </span><?=  $Price_per_day ?></div>
-							<form method="get" name="form" action="carspecs.php">
-							<button class="btn" name="plate" type="submit" value=<?= $row["Plate_id"] ?> > Rent Now </button>
-							</form>
+							<div class="box">
+								<div class="price"><span style="color:green">$</span> <?=  $Price_per_day ?></div>
+								<form method="get" name="form" action="carspecs.php">
+									<button class="btn" name="plate" type="submit" value=<?= $row["Plate_id"] ?> > Rent Now </button>
+								</form>
+							</div>
 						</div>
 						<?php
 					}

@@ -70,7 +70,7 @@ body{
     left: 60%;
     transform: translate(-50%,-50%);
     height: 30px;
-    margin-left: 130px;
+    margin-left: 150px;
 }
 
 .navbar .menu li{
@@ -208,28 +208,99 @@ body{
     padding: 0 20px;
 }
 
+.car .card .box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.car .card .box .price{
+    color: rgba(182, 77, 35);
+    font-size: 20px;
+    font-weight: bold;
+}
 
 .car .card .price{
     color: rgba(182, 77, 35);
     font-size: 20px;
     font-weight: bold;
-   margin-left: 20px;
 }
 
-.car .card .btn{
+.car .card .box .btn{
     font-size: 13px;
-    color: rgba(182, 77, 35);
+    color: rgb(56, 38, 4);
     padding: 10px 18px;
     font-weight: 900;
     border: 1px solid rgba(182, 77, 35);
     border-radius: 20px;
-    margin-left: 20px;
-    margin-top: 7px;
 }
 
-.car .card .btn:hover{
+.car .card .box .btn:hover{
     cursor: pointer;
     background-color: rgba(182, 77, 35);
+    color: white;
+}
+
+.car .card .box .btn0{
+    font-size: 30px;
+    color: rgb(56, 38, 4);
+    padding: 40px 70px;
+    font-weight: 900;
+    border: 1px solid rgba(182, 77, 35);
+    border-radius: 20px;
+}
+
+.car .card .box .btn0:hover{
+    cursor: pointer;
+    background-color: rgba(182, 77, 35);
+    color: white;
+}
+
+.car .card .box .btn1{
+    font-size: 30px;
+    color: rgb(56, 38, 4);
+    padding: 20px 45px;
+    font-weight: 900;
+    border: 1px solid rgba(182, 77, 35);
+    border-radius: 20px;
+}
+
+.car .card .box .btn1:hover{
+    cursor: pointer;
+    background-color: rgba(182, 77, 35);
+    color: white;
+}
+
+.car .card .box .btn2{
+    font-size: 13px;
+    color: black;
+    padding: 10px 18px;
+    font-weight: 900;
+    background-color: greenyellow;
+    border: 1px solid rgba(182, 77, 35);
+    border-radius: 20px;
+}
+
+.car .card .box .btn2:hover{
+    cursor: pointer;
+    background-color: greenyellow;
+    color: white;
+}
+
+.car .card .box .btn3{
+    font-size: 13px;
+    color: black;
+    padding: 10px 18px;
+    font-weight: 900;
+    background-color: red;
+    border: 1px solid rgba(182, 77, 35);
+    border-radius: 20px;
+}
+
+.car .card .box .btn3:hover{
+    cursor: pointer;
+    background-color: red;
     color: white;
 }
 
