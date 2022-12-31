@@ -93,6 +93,16 @@ text-align: center;
 box-shadow: 0 0 14px rgba(0, 0, 0, 0.3);
 }
 
+.content {
+  background-image: url(https://c4.wallpaperflare.com/wallpaper/1011/814/541/lamborghini-lamborghini-aventador-car-supercars-wallpaper-preview.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #f3f4f6;
+}
+
 .btn2{
 border-radius: 4px;
 background-color: rgb(16, 170, 68);
@@ -106,7 +116,8 @@ transition: all 0.5s;
 cursor: pointer;
 margin: 36px;
 box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
-margin-left: 80px;
+margin-top: 0px;
+margin-left: 320px;
 }
 
 .btn2{
@@ -148,8 +159,7 @@ transition: all 0.5s;
 cursor: pointer;
 margin: 36px;
 box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
-margin-left: 80px;
-margin-bottom: 100px;
+margin-left: 320px;
 }
 
 .btn3{
@@ -172,8 +182,8 @@ transition: all 0.5s;
 cursor: default;
 margin: 36px;
 box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
-margin-bottom: 100px;
-margin-left: 300px;
+margin-top: 0px;
+margin-left: 320px;
 }
 
 .btn1{
@@ -199,7 +209,7 @@ cursor: pointer;
 margin: 36px;
 box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
 margin-top: -200px;
-margin-left: 300px;
+margin-left: 320px;
 }
 
 .btn{
@@ -248,14 +258,32 @@ right: 10px;
 
 .specs{
 width: 450px;
-height: 800px;
-background: rgb(255, 255, 255);
+height: 400px;
+background: rgb(214, 211, 211);
 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 border-radius: 5px;
 border-color: black;
 padding: 10px;
 margin-top: -420px;
 margin-left: 70px;
+}
+
+.formDate{
+  width: 450px;
+  height: 450px;
+  background: rgb(214, 211, 211);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  border-color: black;
+  padding: 10px;
+  margin-top: 50px;
+  margin-left: 70px;
+  }
+
+  .formDate .sort{
+    font-weight: 700;
+font-size: 24px;
+color: rgba(182, 77, 35);
 }
 
 .specs .sort{
@@ -270,12 +298,18 @@ font-size: 24px;
 color: black;
 }
 
-.specs .info input, .specs .info textarea {
+.formDate .ans{
+  font-weight: 700;
+  font-size: 24px;
+  color: black;
+  }
+
+.formDate .info input, .formDate .info textarea {
 padding: 7px;
 font-size: 18px;
 }
 
-.specs .info input.form-control {
+.formDate .info input.form-control {
 height: auto;
 background-color: white;
 color: black;
