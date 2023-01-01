@@ -102,7 +102,7 @@ $currentDate = date("Y-m-d");
 				<a href="#">Account</a>
 				<ul class="dropdown">
 					<li><a href="manage.php">Manage your account</a></li>
-					<li><a href="login.php">Log out</a></li>
+					<li><a href="index.php">Log out</a></li>
 				</ul>
 			</li>
 			<li><a href="#">About us</a></li>
@@ -176,7 +176,7 @@ $currentDate = date("Y-m-d");
 								<label class="sort">Total Price:</label><br>
 								<p class="ans">$<p class="ans" id="output"></p></p>
 							</div>
-								<button class="btn2" name=reserve type="submit"><span>Reserve</span></button>
+								<button class="btn2" name=reserve type="submit" action=""><span>Reserve</span></button>
 							</form>
 							<form method="get" name="form" action="">
 								<button class="btn1" name="plate2" type="submit" disabled><span> Pay </span></button>
@@ -230,7 +230,7 @@ $currentDate = date("Y-m-d");
 								<label class="sort">Total Price:</label>
 								<p class="ans"><span style="color:green">$</span><p class="ans" id="output"></p></p>
 							</div>
-								<button class="btn1" name=reserve type="submit" disabled><span>Reserve</span></button>
+								<button class="btn1" name=reserve type="submit" action="" disabled><span>Reserve</span></button>
 							</form>
 							<form method="get" name="form" action="checkout.php">
 								<button class="btn1" name="plate2" type="submit" disabled><span> Pay </span></button>
@@ -283,7 +283,7 @@ $currentDate = date("Y-m-d");
 								<label class="sort">Total Price:</label><br>
 								<p class="ans"><span style="color:green">$</span><p class="ans" id="output"></p></p>
 							</div>
-								<button class="btn2" name=reserve type="submit" ><span>Reserve</span></button>
+								<button class="btn2" name=reserve type="submit" action=""><span>Reserve</span></button>
 							</form>
 							<form method="get" name="form" action="">
 								<button class="btn1" name="plate2" type="submit" disabled><span> Pay </span></button>
@@ -330,7 +330,7 @@ $currentDate = date("Y-m-d");
 				$temp = strtotime("+1 day", strtotime("$temp"));
 				$temp = date("Y-m-d",$temp);
 			}
-			$query = "SELECT * FROM `reservation` WHERE `reservation`.national_id = '$national_id'
+			$query = "SELECT * FROM `reservation` WHERE `reservation`.national_id = '$nationalID'
 					AND `reservation`.Plate_id = '$plateid' AND `reservation`.Entry_date = '$currentDate'";
 			$result = mysqli_query($connect, $query);
 			if (mysqli_num_rows($result) > 0)
@@ -343,7 +343,6 @@ $currentDate = date("Y-m-d");
 			$result=$connect->query($sql);
 			
 			header("Location:welcome user.php");
-			exit();
 		}
 	?>
 

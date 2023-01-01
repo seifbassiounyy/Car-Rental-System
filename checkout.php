@@ -72,7 +72,7 @@ $currentDate = date("Y-m-d");
 				<a href="#">Account</a>
 				<ul class="dropdown">
 					<li><a href="manage.php">Manage your account</a></li>
-					<li><a href="login.php">Log out</a></li>
+					<li><a href="index.php">Log out</a></li>
 				</ul>
 			</li>
 			<li><a href="#">About us</a></li>
