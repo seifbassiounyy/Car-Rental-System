@@ -1,5 +1,6 @@
 # Car Rental System
 This is a car rental system which allows customers to reserve/rent cars and allows the admin to approve or deny any reservation through the dashboard.
+This project was the final project of DBMS course.
 
 ## Customer's Actions
 A customer can do the following actions:
