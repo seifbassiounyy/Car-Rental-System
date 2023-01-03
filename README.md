@@ -13,6 +13,8 @@ The admin can do the following actions:
 * Add/modify or delete any car or change it's status for a specific period.
 * Approve or deny any reservation.
 * Add offices possessing the cars.
+* Search for any customer by any of his attributes.
+* Search for any car by any of it's attributes.
 </br>
 
 The systmer informes the admin the following:
@@ -23,5 +25,3 @@ The systmer informes the admin the following:
 * Get a report of daily payments for a specific period.
 * Check all statuses of all cars on a specific day.
 * See all reservations done on a specific day (`Entry date`).
-* Search for any customer by any of his attributes.
-* Search for any car by any of it's attributes.
