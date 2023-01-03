@@ -15,7 +15,7 @@ The admin can do the following actions:
 * Add offices possessing the cars.
 </br>
 
-The admin is able to be informed of the following:
+The systmer informes the admin the following:
 
 * Monitor all reservations for a speciifc period (`pickup date` -> `return date`).
 * Monitor all reservations done by a specific customer.
